@@ -8,16 +8,18 @@ from basic_functions import *
 
 encoding = "ascii"
 
-B = decode_hex("1c0111001f010100061a024b53535009181c")
-C = decode_hex("686974207468652062756c6c277320657965")
 
 # Assume x and y are the same length.
 def xor_bytes(x, y):
     return bytes([i ^ j for i, j in zip(x, y)])
 
 
-foo = xor_bytes(B, C)
-foo = encode_hex(foo)
-combination = foo.decode(encoding)
+if __name__ == "__main__":
+    B = decode_hex("1c0111001f010100061a024b53535009181c")
+    C = decode_hex("686974207468652062756c6c277320657965")
 
-print(combination)
+    foo = xor_bytes(B, C)
+    foo = encode_hex(foo)
+    combination = foo.decode(encoding)
+
+    print(combination)
