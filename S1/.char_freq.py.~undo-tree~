@@ -1,0 +1,40 @@
+(undo-tree-save-format-version . 1)
+"12a05ab97f0852e32148840f02d9bf9461ff9b94"
+[nil nil nil nil (26106 37119 665751 439000) 0 nil]
+([nil nil ((nil rear-nonsticky nil 650 . 651) (nil fontified nil 1 . 651) (1 . 651) (t . -1)) nil (26106 37119 665749 43000) 0 nil])
+([nil nil ((651 . 652)) nil (26106 37119 665745 471000) 0 nil])
+([nil current ((1 . 652) (#("char_freqs = {
+    'a': 0.0651738,
+    'b': 0.0124248,
+    'c': 0.0217339,
+    'd': 0.0349835,
+    'e': 0.1041442,
+    'f': 0.0197881,
+    'g': 0.0158610,
+    'h': 0.0492888,
+    'i': 0.0558094,
+    'j': 0.0009033,
+    'k': 0.0050529,
+    'l': 0.0331490,
+    'm': 0.0202124,
+    'n': 0.0564513,
+    'o': 0.0596302,
+    'p': 0.0137645,
+    'q': 0.0008606,
+    'r': 0.0497563,
+    's': 0.0515760,
+    't': 0.0729357,
+    'u': 0.0225134,
+    'v': 0.0082903,
+    'w': 0.0171272,
+    'x': 0.0013692,
+    'y': 0.0145984,
+    'z': 0.0007836,
+    ' ': 0.1918182 
+}
+
+
+def freq_score(S):
+    return sum([char_freqs[ch.lower()] for ch in S if ch in char_freqs])
+" 0 10 (fontified t face font-lock-variable-name-face) 10 19 (fontified t) 19 22 (fontified t face font-lock-string-face) 22 39 (fontified t) 39 42 (fontified t face font-lock-string-face) 42 59 (fontified t) 59 62 (fontified t face font-lock-string-face) 62 79 (fontified t) 79 82 (fontified t face font-lock-string-face) 82 99 (fontified t) 99 102 (fontified t face font-lock-string-face) 102 119 (fontified t) 119 122 (fontified t face font-lock-string-face) 122 139 (fontified t) 139 142 (fontified t face font-lock-string-face) 142 159 (fontified t) 159 162 (fontified t face font-lock-string-face) 162 179 (fontified t) 179 182 (fontified t face font-lock-string-face) 182 199 (fontified t) 199 202 (fontified t face font-lock-string-face) 202 219 (fontified t) 219 222 (fontified t face font-lock-string-face) 222 239 (fontified t) 239 242 (fontified t face font-lock-string-face) 242 259 (fontified t) 259 262 (fontified t face font-lock-string-face) 262 279 (fontified t) 279 282 (fontified t face font-lock-string-face) 282 299 (fontified t) 299 302 (fontified t face font-lock-string-face) 302 319 (fontified t) 319 322 (fontified t face font-lock-string-face) 322 339 (fontified t) 339 342 (fontified t face font-lock-string-face) 342 359 (fontified t) 359 362 (fontified t face font-lock-string-face) 362 379 (fontified t) 379 382 (fontified t face font-lock-string-face) 382 399 (fontified t) 399 402 (fontified t face font-lock-string-face) 402 419 (fontified t) 419 422 (fontified t face font-lock-string-face) 422 439 (fontified t) 439 442 (fontified t face font-lock-string-face) 442 459 (fontified t) 459 462 (fontified t face font-lock-string-face) 462 479 (fontified t) 479 482 (fontified t face font-lock-string-face) 482 499 (fontified t) 499 502 (fontified t face font-lock-string-face) 502 519 (fontified t) 519 522 (fontified t face font-lock-string-face) 522 539 (fontified t) 539 542 (fontified t face font-lock-string-face) 542 559 (fontified t) 559 562 (fontified t face font-lock-keyword-face) 562 563 (fontified t) 563 573 (fontified t face font-lock-function-name-face) 573 578 (fontified t) 578 582 (fontified t) 582 588 (fontified t face font-lock-keyword-face) 588 589 (fontified t) 589 592 (fontified t face font-lock-builtin-face) 592 617 (fontified t) 617 620 (fontified t face font-lock-keyword-face) 620 624 (fontified t) 624 626 (fontified t face font-lock-keyword-face) 626 629 (fontified t) 629 631 (fontified t face font-lock-keyword-face) 631 635 (fontified t) 635 637 (fontified t face font-lock-keyword-face) 637 649 (fontified t) 649 650 (fontified t rear-nonsticky t) 650 651 (fontified t)) . -1) (undo-tree-id0 . -651) (undo-tree-id1 . -13) (undo-tree-id2 . -13) (undo-tree-id3 . -13) (undo-tree-id4 . -13) (undo-tree-id5 . -13) (undo-tree-id6 . -13) (undo-tree-id7 . -13) (undo-tree-id8 . -13) (undo-tree-id9 . -13) (undo-tree-id10 . -13) (undo-tree-id11 . -13) (undo-tree-id12 . -13) (undo-tree-id13 . -13) (undo-tree-id14 . -13) (undo-tree-id15 . -13) (undo-tree-id16 . -13) (undo-tree-id17 . -13) (undo-tree-id18 . -13) (undo-tree-id19 . -13) (undo-tree-id20 . -13) (undo-tree-id21 . -13) (undo-tree-id22 . -13) (undo-tree-id23 . -13) (undo-tree-id24 . -13) (undo-tree-id25 . -13) (undo-tree-id26 . -13) (undo-tree-id27 . -13) (undo-tree-id28 . 1) (undo-tree-id29 . -651) (undo-tree-id30 . -582) (undo-tree-id31 . -582) (undo-tree-id32 . -651) (undo-tree-id33 . -651) 652) nil (26106 37119 665736 382000) 0 nil])
+nil
