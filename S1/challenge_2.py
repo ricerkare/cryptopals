@@ -6,7 +6,7 @@
 import base64
 from basic_functions import *
 
-encoding = "ascii"
+encoding = "utf-8"
 
 
 # Assume x and y are the same length.

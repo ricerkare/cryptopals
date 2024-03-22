@@ -2,6 +2,8 @@ from basic_functions import *
 from char_freq import *
 from challenge_2 import xor_bytes
 
+encoding = "utf-8"
+
 # Returns the key to a message that has been xored with a single
 # character. Assume argument is of type bytes. The key is found using
 # the character frequency score.
@@ -11,23 +13,23 @@ def break_single_char_xor(emsg):
     max_freq = 0
     the_key = ""
     for i in range(26):
-        lc_letter = chr(lower + i)
-        uc_letter = chr(upper + i)
+        lc_letter = (lower + i).to_bytes(1, "big")
+        uc_letter = (upper + i).to_bytes(1, "big")
 
         # Try lowercase letter.
-        new_xor = xor_bytes(emsg, (lc_letter * len(emsg)).encode("ascii"))
-        new_freq = freq_score(new_xor.decode("ascii"))
+        new_xor = xor_bytes(emsg, (lc_letter * len(emsg)))
+        new_freq = freq_score(new_xor)
         if new_freq > max_freq:
             max_freq = new_freq
             the_key = lc_letter
 
         # Try uppercase letter.
-        new_xor = xor_bytes(emsg, (uc_letter * len(emsg)).encode("ascii"))
-        new_freq = freq_score(new_xor.decode("ascii"))
+        new_xor = xor_bytes(emsg, (uc_letter * len(emsg)))
+        new_freq = freq_score(new_xor)
         if new_freq > max_freq:
             max_freq = new_freq
             the_key = uc_letter
-    return the_key
+    return the_key, max_freq
 
 
 if __name__ == "__main__":
@@ -36,8 +38,8 @@ if __name__ == "__main__":
     )
 
     # Find the key whose string has the highest frequency score.
-    the_key = break_single_char_xor(xored_message).encode("ascii")
+    the_key = break_single_char_xor(xored_message)[0]
     original_message = xor_bytes(xored_message, the_key * len(xored_message))
 
-    print("The key is:", the_key.decode("ascii"))
-    print("The message is:", original_message.decode("ascii"))
+    print("The key is:", the_key.decode(encoding))
+    print("The message is:", original_message.decode(encoding))
