@@ -13,8 +13,10 @@ def encode_hex(s):
 
 
 def decode_base64(s):
-    return codecs.getencoder("base64_codec")(s)[0]
+    return base64.b64decode(s)
+    # return codecs.getencoder("base64_codec")(s)[0]
 
 
 def encode_base64(s):
-    return codecs.getencoder("base64_codec")(s)[0]
+    return base64.b64encode(s)
+    # return codecs.getencoder("base64_codec")(s)[0]

@@ -57,69 +57,16 @@ char_freqs = {
     b" ": 0.1918182,
 }
 
-# char_freqs = {
-#     b"a": 1,
-#     b"b": 1,
-#     b"c": 1,
-#     b"d": 1,
-#     b"e": 1,
-#     b"f": 1,
-#     b"g": 1,
-#     b"h": 1,
-#     b"i": 1,
-#     b"j": 1,
-#     b"k": 1,
-#     b"l": 1,
-#     b"m": 1,
-#     b"n": 1,
-#     b"o": 1,
-#     b"p": 1,
-#     b"q": 1,
-#     b"r": 1,
-#     b"s": 1,
-#     b"t": 1,
-#     b"u": 1,
-#     b"v": 1,
-#     b"w": 1,
-#     b"x": 1,
-#     b"y": 1,
-#     b"z": 1,
-#     b"A": 1,
-#     b"B": 1,
-#     b"C": 1,
-#     b"D": 1,
-#     b"E": 1,
-#     b"F": 1,
-#     b"G": 1,
-#     b"H": 1,
-#     b"I": 1,
-#     b"J": 1,
-#     b"K": 1,
-#     b"L": 1,
-#     b"M": 1,
-#     b"N": 1,
-#     b"O": 1,
-#     b"P": 1,
-#     b"Q": 1,
-#     b"R": 1,
-#     b"S": 1,
-#     b"T": 1,
-#     b"U": 1,
-#     b"V": 1,
-#     b"W": 1,
-#     b"X": 1,
-#     b"Y": 1,
-#     b"Z": 1,
-#     b" ": 1,
-# }
-
 
 def freq_score(S):
     """Return the character frequency score of a bytes object S."""
     return sum(
         [
-            char_freqs[ch.to_bytes(1, "big")]
+            (
+                char_freqs[ch.to_bytes(1, "big")]
+                if ch.to_bytes(1, "big") in char_freqs
+                else 0
+            )
             for ch in S
-            if ch.to_bytes(1, "big") in char_freqs
         ]
     )

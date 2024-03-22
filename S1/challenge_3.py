@@ -4,31 +4,30 @@ from challenge_2 import xor_bytes
 
 encoding = "utf-8"
 
-# Returns the key to a message that has been xored with a single
-# character. Assume argument is of type bytes. The key is found using
-# the character frequency score.
+
+def single_char_xor(msg, char):
+    return xor_bytes(msg, char * len(msg))
+
+
 def break_single_char_xor(emsg):
-    lower = ord("a")  # This is 97, but magic numbers suck.
-    upper = ord("A")  # This is 65, but magic numbers suck.
-    max_freq = 0
-    the_key = ""
-    for i in range(26):
-        lc_letter = (lower + i).to_bytes(1, "big")
-        uc_letter = (upper + i).to_bytes(1, "big")
+    """
+    Returns the key to a message that has been xored with a single
+    character. Assume argument is of type bytes. The key is found using
+    the character frequency score.
+    """
 
-        # Try lowercase letter.
-        new_xor = xor_bytes(emsg, (lc_letter * len(emsg)))
+    max_freq = 0.0
+    the_key = b""
+    for i in range(0xFF):
+        char = i.to_bytes(1, "big")
+
+        # Try current character
+        new_xor = single_char_xor(emsg, char)
         new_freq = freq_score(new_xor)
         if new_freq > max_freq:
             max_freq = new_freq
-            the_key = lc_letter
+            the_key = char
 
-        # Try uppercase letter.
-        new_xor = xor_bytes(emsg, (uc_letter * len(emsg)))
-        new_freq = freq_score(new_xor)
-        if new_freq > max_freq:
-            max_freq = new_freq
-            the_key = uc_letter
     return the_key, max_freq
 
 

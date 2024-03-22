@@ -1,0 +1,5 @@
+def repeating_key_xor(msg, key):
+    emsg = b""
+    for i in range(len(msg)):
+        emsg += xor_bytes(msg, key[i % len(key)])
+    return emsg
