@@ -41,23 +41,22 @@ if __name__ == "__main__":
         avg /= len(emsg) // keysize_guess
         key_avgs.append([keysize_guess, avg])
 
-    keysizes = [x[0] for x in sorted(key_avgs, key=lambda x: x[1])[:3]]
-    key_guesses = []
-    for keysize in keysizes:
-        print("Trying keysize", keysize)
-        blocks = [
-            emsg[n * keysize : (n + 1) * keysize]
-            for n in range(int(len(emsg) / keysize))
-        ]
+    keysize = [x[0] for x in sorted(key_avgs, key=lambda x: x[1])][0]
+    blocks = [
+        emsg[n * keysize : (n + 1) * keysize]
+        for n in range(int(len(emsg) / keysize))
+    ]
 
-        transposed_blocks = [
-            b"".join([block[i].to_bytes(1, "big") for block in blocks])
-            for i in range(keysize)
-        ]
+    transposed_blocks = [
+        b"".join([block[i].to_bytes(1, "big") for block in blocks])
+        for i in range(keysize)
+    ]
 
-        single_char_keys = [
-            break_single_char_xor(block)[0] for block in transposed_blocks
-        ]
-        key_guess = b"".join(single_char_keys)
-        key_guesses.append(key_guess)
-        print(key_guess)
+    single_char_keys = [
+        break_single_char_xor(block)[0] for block in transposed_blocks
+    ]
+    key_guess = b"".join(single_char_keys)
+    print("The key is:", key_guess.decode())
+    msg = repeating_key_xor(emsg, key_guess)
+    print("The original message is:\n\n", msg.decode())
+    print()
