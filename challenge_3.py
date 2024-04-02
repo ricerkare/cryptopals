@@ -16,19 +16,24 @@ def break_single_char_xor(emsg):
     the character frequency score.
     """
 
-    max_freq = 0.0
+    freq_score = -1.0
     the_key = b""
+
+    # We want to find the best frequency score, which will be the
+    # minimum, since the frequency score calculates how far the
+    # frequency distribution deviates from the expected distribution
+    # of letters.
     for i in range(0xFF):
         char = i.to_bytes(1, "big")
 
-        # Try current character
+        # Try current character.
         new_xor = single_char_xor(emsg, char)
-        new_freq = freq_score(new_xor)
-        if new_freq > max_freq:
-            max_freq = new_freq
+        new_score = freq_diff_score(new_xor)
+        if freq_score == -1 or new_score < freq_score:
+            freq_score = new_score
             the_key = char
 
-    return the_key, max_freq
+    return the_key, freq_score
 
 
 if __name__ == "__main__":

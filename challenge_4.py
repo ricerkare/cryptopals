@@ -16,16 +16,17 @@ if __name__ == "__main__":
     ]
 
     the_key = b""
-    max_freq = 0.0
+    min_score = -1.0
     the_index = 0
 
     for i in range(len(key_guesses)):
-        # if not line_guesses[i].isascii():
-        #     pass
-        if key_guesses[i][1] > max_freq:
-            max_freq = key_guesses[i][1]
+        if not line_guesses[i].isascii():
+            continue
+        if min_score == -1.0 or key_guesses[i][1] < min_score:
+            min_score = key_guesses[i][1]
             the_key = key_guesses[i][0]
             the_index = i
+    the_message = line_guesses[the_index]
 
     print()
     print(
