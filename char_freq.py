@@ -1,10 +1,11 @@
 import string
+from basic_functions import char_set
 
 encoding = "utf-8"
 
 # The average frequency of each letter of the alphabet, and also the
 # space character.
-char_freq = {
+english_char_freq = {
     b"A": 0.0651738,
     b"B": 0.0124248,
     b"C": 0.0217339,
@@ -34,12 +35,17 @@ char_freq = {
     b" ": 0.1918182,
 }
 
-avg_freq = sum([c ** 2 for c in char_freq.values()])
+english_char_freq_ss = sum([c ** 2 for c in english_char_freq.values()])
 
 # for i in range(0xFF):
 #     if chr(i) not in string.ascii_uppercase + " ":
-#         char_freq[i.to_bytes(1, "big")] = 0
+#         english_char_freq[i.to_bytes(1, "big")] = 0
 
+def freq_dict(msg):
+    freqs = dict()
+    for c in char_set(msg):
+        freqs[c] = msg.count(c)
+    return freqs
 
 def freq_diff_score(txt):
     # Let's only count lowercase letters, thereby assuming the text is
@@ -50,16 +56,16 @@ def freq_diff_score(txt):
         for ch in string.ascii_uppercase + " "
     }
     freq_diff = {
-        ch.encode(): abs(txt_freq[ch.encode()] - char_freq[ch.encode()])
+        ch.encode(): abs(txt_freq[ch.encode()] - english_char_freq[ch.encode()])
         for ch in string.ascii_uppercase + " "
     }
     return sum(freq_diff.values())
 
 
-# txt = b"On Debian and Ubuntu, the words file is provided by the\
-# wordlist package, or its provider packages wbritish, wamerican,\
-# etc. On Fedora and Arch Linux, the words file is provided by the words\
-# package. The words package is sourced from data from the Moby Project,\
-# a public domain compilation of words.["
+txt = b"On Debian and Ubuntu, the words file is provided by the\
+wordlist package, or its provider packages wbritish, wamerican,\
+etc. On Fedora and Arch Linux, the words file is provided by the words\
+package. The words package is sourced from data from the Moby Project,\
+a public domain compilation of words.["
 
-# print(check_freq(txt))
+print(freq_diff_score(txt))

@@ -20,3 +20,10 @@ def decode_base64(s):
 def encode_base64(s):
     return base64.b64encode(s)
     # return codecs.getencoder("base64_codec")(s)[0]
+
+def char_set(s):
+    return [c.to_bytes(1, "big") for c in set(s)]
+
+def blockify(x, blocksize):
+    return [x[i * blocksize : (i+1) * blocksize] for i in \
+            range(len(x) // blocksize)]
