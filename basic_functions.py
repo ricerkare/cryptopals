@@ -26,4 +26,4 @@ def char_set(s):
 
 def blockify(x, blocksize):
     return [x[i * blocksize : (i+1) * blocksize] for i in \
-            range(len(x) // blocksize)]
+            range(int(len(x) // blocksize))]
